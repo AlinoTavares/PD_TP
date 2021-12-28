@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17d23289-1369-428f-91ea-d91b3a62c2e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Cliente/src/com/company/Servidor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/src/com/company/typos/Typos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/out/production/Cliente/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/out/production/Cliente/com/company/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/src/com/company/Conteudo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/src/com/company/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/src/com/company/Utilizador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/src/com/company/typos/Typos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/com/company/typos/Typos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GRDS/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GRDS/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GRDS/com/company/Servidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GRDS/com/company/Servidor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Servidor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -2,27 +2,96 @@ package com.company;
 
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 
-import static com.company.typos.Typos.MAX_SIZE;
-import static com.company.typos.Typos.SERVER_REQUEST;
+import static com.company.typos.Typos.*;
 
 public class Main {
+    private static Servidor servidor = null;
+    private Utilizador utilizador = null;
+
+    private static Socket socket = null;
+    private static ObjectOutputStream oOS;
+    private static ObjectInputStream oIS;
 
     public static void main(String[] args) {
-        InetAddress GRDS_Addr;
-        int GRDS_Port = -1;
-        DatagramPacket packet;
-        DatagramSocket socketUDP = null;
-
 
         if (args.length != 2) {
             System.out.println("Sintaxe: java cliente GRDS_Address GRDS_Port");
             return;
         }
 
+        servidor = getServidor(args[0], args[1]);
+
+        try{
+            socket = new Socket(servidor.getIp(), servidor.getPort());
+
+            oOS = new ObjectOutputStream(socket.getOutputStream());
+            oIS = new ObjectInputStream(socket.getInputStream());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        System.out.println("1 - Login");
+        System.out.println("2 - Registar");
+
+        Scanner sc = new Scanner(System.in);
+        int aux = sc.nextInt();
+
+        while(true) {
+            switch (aux) {
+                case 1:
+                    //loginUtilizador();
+                    break;
+                case 2:
+                    registaUtilizador();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    private static void registaUtilizador() {
+        Scanner sc = new Scanner(System.in);
+        String nome, username, pass;
+        Utilizador utilizador = null;
+
+        System.out.println("Introduza o seu nome:");
+        nome = sc.nextLine();
+        System.out.println("Introduza o seu username:");
+        username = sc.next();
+        System.out.println("Introduza a sua password:");
+        pass = sc.next();
+
+        utilizador = new Utilizador(nome, username, pass);
+
+        try{
+            Request request = new Request(REGIST_REQUEST, utilizador);
+
+            oOS.writeObject(request);
+        }
+        catch (IOException e) {
+            System.out.println(e + "_MAIN_8");
+            e.printStackTrace();
+        }
+    }
+
+    private static Servidor getServidor(String ip, String port){
+        InetAddress GRDS_Addr;
+        int GRDS_Port = -1;
+        DatagramPacket packet;
+        DatagramSocket socketUDP = null;
+
+        Servidor servidor = null;
+
+
         try {
-            GRDS_Addr = InetAddress.getByName(args[0]);
-            GRDS_Port = Integer.parseInt(args[1]);
+            GRDS_Addr = InetAddress.getByName(ip);
+            GRDS_Port = Integer.parseInt(port);
 
             socketUDP = new DatagramSocket();
 
@@ -73,7 +142,7 @@ public class Main {
                 e.printStackTrace();
             }
 
-            Servidor servidor = null;
+
             try {
                 servidor = (Servidor)oin.readObject();
             } catch (IOException e) {
@@ -96,5 +165,7 @@ public class Main {
                 socketUDP.close();
             }
         }
+
+        return servidor;
     }
 }
