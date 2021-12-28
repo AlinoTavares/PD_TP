@@ -59,24 +59,41 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String nome, username, pass;
         Utilizador utilizador = null;
+        Request request = null;
 
-        System.out.println("Introduza o seu nome:");
-        nome = sc.nextLine();
-        System.out.println("Introduza o seu username:");
-        username = sc.next();
-        System.out.println("Introduza a sua password:");
-        pass = sc.next();
+        boolean sair = false;
+        while (!sair) {
+            System.out.println("Introduza o seu nome:");
+            nome = sc.nextLine();
+            System.out.println("Introduza o seu username:");
+            username = sc.next();
+            System.out.println("Introduza a sua password:");
+            pass = sc.next();
 
-        utilizador = new Utilizador(nome, username, pass);
+            utilizador = new Utilizador(nome, username, pass);
 
-        try{
-            Request request = new Request(REGIST_REQUEST, utilizador);
+            try {
+                request = new Request(REGIST_REQUEST, utilizador);
 
-            oOS.writeObject(request);
-        }
-        catch (IOException e) {
-            System.out.println(e + "_MAIN_8");
-            e.printStackTrace();
+                oOS.writeObject(request);
+            } catch (IOException e) {
+                System.out.println(e + "_MAIN_8");
+                e.printStackTrace();
+            }
+
+            try {
+                request = (Request) oIS.readObject();
+                if (request.getMessageCode().equals(REGIST_ACCEPTED)) {
+                    sair = true;
+                }
+
+            } catch (IOException e) {
+                System.out.println(e + "_MAIN_9");
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                System.out.println(e + "_MAIN_10");
+                e.printStackTrace();
+            }
         }
     }
 
