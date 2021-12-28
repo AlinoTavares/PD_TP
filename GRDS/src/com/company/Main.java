@@ -6,11 +6,10 @@ import java.util.List;
 import java.io.*;
 import java.net.*;
 
-public class Main {
-    public static final int MAX_SIZE = 256;
-    public static final String SERVER_REQUEST = "SERVER_REQUEST";
-    public static final int PORTO_ESCURA_CLIENTE = 6000;
+import static com.company.typos.Typos.*;
 
+
+public class Main {
     private static List<Servidor> servidores = new ArrayList<>();
     private static Iterator<Servidor> it;
 
@@ -21,10 +20,6 @@ public class Main {
         DatagramPacket packet;
         String receivedMsg;
 
-        servidores.add(new Servidor("196.199.199.199",6000));
-        servidores.add(new Servidor("197.199.199.199",6001));
-        servidores.add(new Servidor("198.199.199.199",6002));
-        servidores.add(new Servidor("199.199.199.199",6003));
 
         try{
             it = servidores.iterator();
@@ -39,14 +34,15 @@ public class Main {
 
                 receivedMsg = (String)oin.readObject();
 
-                System.out.println("Recebido \"" + receivedMsg + "\" de " +
-                        packet.getAddress().getHostAddress() + ":" + packet.getPort());
+                //System.out.println("Recebido \"" + receivedMsg + "\" de " +
+                //        packet.getAddress().getHostAddress() + ":" + packet.getPort());
 
                 if(!receivedMsg.equalsIgnoreCase(SERVER_REQUEST)){
                     continue;
                 }
 
                 var servidor = proximoServidor();
+                //System.out.println(servidor.getIp()+ "    " +servidor.getPort());
 
                 var bout = new ByteArrayOutputStream();
                 var oout = new ObjectOutputStream(bout);

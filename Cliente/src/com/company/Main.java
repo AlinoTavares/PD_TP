@@ -3,9 +3,10 @@ package com.company;
 import java.io.*;
 import java.net.*;
 
-public class Main {
+import static com.company.typos.Typos.MAX_SIZE;
+import static com.company.typos.Typos.SERVER_REQUEST;
 
-    public static final String SERVER_REQUEST = "SERVER_REQUEST";
+public class Main {
 
     public static void main(String[] args) {
         InetAddress GRDS_Addr;
@@ -55,14 +56,42 @@ public class Main {
                 e.printStackTrace();
             }
 
+            packet = new DatagramPacket(new byte[MAX_SIZE], MAX_SIZE);
+            try {
+                socketUDP.receive(packet);
+            } catch (IOException e) {
+                System.out.println(e + "_MAIN_5");
+                e.printStackTrace();
+            }
+
+            var bin = new ByteArrayInputStream(packet.getData(), 0, packet.getLength());
+            ObjectInputStream oin = null;
+            try {
+                oin = new ObjectInputStream(bin);
+            } catch (IOException e) {
+                System.out.println(e + "_MAIN_6");
+                e.printStackTrace();
+            }
+
+            Servidor servidor = null;
+            try {
+                servidor = (Servidor)oin.readObject();
+            } catch (IOException e) {
+                System.out.println(e + "_MAIN_7");
+                e.printStackTrace();
+            }
+            //System.out.println(servidor.getIp() + "    " + servidor.getPort());
+
+
         } catch (UnknownHostException e) {
             System.out.println("Destino desconhecido:\n\t" + e);
         } catch (NumberFormatException e) {
             System.out.println("O porto do servidor deve ser um inteiro positivo.");
         } catch (SocketException e) {
             System.out.println("Ocorreu um erro ao nivel do socket UDP:\n\t" + e);
-
-        } finally {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }finally {
             if (socketUDP != null) {
                 socketUDP.close();
             }
