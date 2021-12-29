@@ -7,4 +7,8 @@ public class Typos {
     public static final int PORTO_ESCURA_CLIENTE = 8080;
     public static final int PORTO_ESCURA_SERVIDOR = 8086;
     public static final String CONFIRMACAO_SERVIDOR = "CONFIRMACAO_SERVIDOR";
+    public static final String REGIST_REQUEST = "REGIST_REQUEST";
+    public static final String REGIST_ACCEPTED = "REGIST_ACCEPTED";
+    public static final String REGIST_NOT_ACCEPTED = "REGIST_NOT_ACCEPTED";
 }
+
