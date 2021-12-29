@@ -36,17 +36,22 @@ public class Main {
 
         System.out.println("1 - Login");
         System.out.println("2 - Registar");
+        System.out.println("3 - Sair");
 
         Scanner sc = new Scanner(System.in);
         int aux = sc.nextInt();
 
-        while(true) {
+        boolean sair = false;
+        while(!sair) {
             switch (aux) {
                 case 1:
                     //loginUtilizador();
                     break;
                 case 2:
                     registaUtilizador();
+                    break;
+                case 3:
+                    sair = true;
                     break;
                 default:
                     break;
@@ -61,39 +66,37 @@ public class Main {
         Utilizador utilizador = null;
         Request request = null;
 
-        boolean sair = false;
-        while (!sair) {
-            System.out.println("Introduza o seu nome:");
-            nome = sc.nextLine();
-            System.out.println("Introduza o seu username:");
-            username = sc.next();
-            System.out.println("Introduza a sua password:");
-            pass = sc.next();
 
-            utilizador = new Utilizador(nome, username, pass);
+        System.out.println("Introduza o seu nome:");
+        nome = sc.nextLine();
+        System.out.println("Introduza o seu username:");
+        username = sc.next();
+        System.out.println("Introduza a sua password:");
+        pass = sc.next();
 
-            try {
-                request = new Request(REGIST_REQUEST, utilizador);
+        utilizador = new Utilizador(nome, username, pass);
 
-                oOS.writeObject(request);
-            } catch (IOException e) {
-                System.out.println(e + "_MAIN_8");
-                e.printStackTrace();
+        try {
+            request = new Request(REGIST_REQUEST, utilizador);
+
+            oOS.writeObject(request);
+        } catch (IOException e) {
+            System.out.println(e + "_MAIN_8");
+            e.printStackTrace();
+        }
+
+        try {
+            request = (Request) oIS.readObject();
+            if (request.getMessageCode().equals(REGIST_ACCEPTED)) {
+                
             }
 
-            try {
-                request = (Request) oIS.readObject();
-                if (request.getMessageCode().equals(REGIST_ACCEPTED)) {
-                    sair = true;
-                }
-
-            } catch (IOException e) {
-                System.out.println(e + "_MAIN_9");
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                System.out.println(e + "_MAIN_10");
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            System.out.println(e + "_MAIN_9");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println(e + "_MAIN_10");
+            e.printStackTrace();
         }
     }
 
