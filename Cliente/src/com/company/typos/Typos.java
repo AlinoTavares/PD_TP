@@ -8,4 +8,7 @@ public class Typos {
 
     public static final String REGIST_REQUEST = "REGIST_REQUEST";
     public static final String REGIST_ACCEPTED = "REGIST_ACCEPTED";
+
+    public static final String LOGIN_REQUEST = "LOGIN_REQUEST";
+    public static final String LOGIN_ACCEPTED = "LOGIN_ACCEPTED";
 }
