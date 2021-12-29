@@ -13,6 +13,7 @@ public class Main {
         int GRDS_Port = -1;
         DatagramPacket packet;
         DatagramSocket socketUDP = null;
+        RecebeClienteThread recebeClienteThread = new RecebeClienteThread(6001);
 
 
         if (args.length != 2) {
@@ -82,6 +83,8 @@ public class Main {
             }
             System.out.println(confirmacao);
 
+            recebeClienteThread.start();
+
 
         } catch (UnknownHostException e) {
             System.out.println("Destino desconhecido:\n\t" + e);
@@ -97,5 +100,7 @@ public class Main {
             }
         }
     }
+
+
 
 }

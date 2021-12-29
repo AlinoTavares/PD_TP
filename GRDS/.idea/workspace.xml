@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c5c5bfa-2d42-462c-94e9-5cb95ed05956" name="Default Changelist" comment="">
+    <list default="true" id="17d23289-1369-428f-91ea-d91b3a62c2e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Servidor/src/com/company/Conteudo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Servidor/src/com/company/RecebeClienteThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Servidor/src/com/company/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Servidor/src/com/company/Utilizador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/out/production/Cliente/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/out/production/Cliente/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/out/production/Cliente/com/company/typos/Typos.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/out/production/Cliente/com/company/typos/Typos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/src/com/company/typos/Typos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/com/company/typos/Typos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Servidor/out/production/untitled104/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/out/production/untitled104/com/company/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Servidor/out/production/untitled104/com/company/typos/Typos.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/out/production/untitled104/com/company/typos/Typos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/typos/Typos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/typos/Typos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,16 +106,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
-      <module name="GRDS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -120,6 +113,16 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <module name="GRDS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

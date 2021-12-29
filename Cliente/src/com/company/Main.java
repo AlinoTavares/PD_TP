@@ -24,7 +24,7 @@ public class Main {
         servidor = getServidor(args[0], args[1]);
 
         try{
-            socket = new Socket(servidor.getIp(), servidor.getPort());
+            socket = new Socket(servidor.getIp(), 6001/*servidor.getPort()*/);
 
             oOS = new ObjectOutputStream(socket.getOutputStream());
             oIS = new ObjectInputStream(socket.getInputStream());
@@ -84,6 +84,7 @@ public class Main {
             try {
                 request = (Request) oIS.readObject();
                 if (request.getMessageCode().equals(REGIST_ACCEPTED)) {
+                    System.out.println(REGIST_ACCEPTED);
                     sair = true;
                 }
 
