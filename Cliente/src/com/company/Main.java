@@ -24,7 +24,7 @@ public class Main {
         servidor = getServidor(args[0], args[1]);
 
         try{
-            socket = new Socket(servidor.getIp(), 6001/*servidor.getPort()*/);
+            socket = new Socket(servidor.getIp(), servidor.getPort());
 
             oOS = new ObjectOutputStream(socket.getOutputStream());
             oIS = new ObjectInputStream(socket.getInputStream());
@@ -33,20 +33,25 @@ public class Main {
             e.printStackTrace();
         }
 
-
-        System.out.println("1 - Login");
-        System.out.println("2 - Registar");
-
+        int aux;
         Scanner sc = new Scanner(System.in);
-        int aux = sc.nextInt();
+        boolean sair = false;
+        while(!sair) {
+            System.out.println("1 - Login");
+            System.out.println("2 - Registar");
+            System.out.println("3 - Sair");
 
-        while(true) {
+            aux = sc.nextInt();
+
             switch (aux) {
                 case 1:
-                    //loginUtilizador();
+                    sair = loginUtilizador();
                     break;
                 case 2:
-                    registaUtilizador();
+                    sair = registaUtilizador();
+                    break;
+                case 3:
+                    sair = true;
                     break;
                 default:
                     break;
@@ -55,47 +60,88 @@ public class Main {
 
     }
 
-    private static void registaUtilizador() {
+    private static boolean loginUtilizador() {
         Scanner sc = new Scanner(System.in);
         String nome, username, pass;
         Utilizador utilizador = null;
         Request request = null;
 
-        boolean sair = false;
-        while (!sair) {
-            System.out.println("Introduza o seu nome:");
-            nome = sc.nextLine();
-            System.out.println("Introduza o seu username:");
-            username = sc.next();
-            System.out.println("Introduza a sua password:");
-            pass = sc.next();
 
-            utilizador = new Utilizador(nome, username, pass);
+        System.out.println("Introduza o seu nome:");
+        nome = sc.nextLine();
+        System.out.println("Introduza o seu username:");
+        username = sc.next();
+        System.out.println("Introduza a sua password:");
+        pass = sc.next();
 
-            try {
-                request = new Request(REGIST_REQUEST, utilizador);
+        utilizador = new Utilizador(nome, username, pass);
 
-                oOS.writeObject(request);
-            } catch (IOException e) {
-                System.out.println(e + "_MAIN_8");
-                e.printStackTrace();
-            }
+        try {
+            request = new Request(LOGIN_REQUEST, utilizador);
 
-            try {
-                request = (Request) oIS.readObject();
-                if (request.getMessageCode().equals(REGIST_ACCEPTED)) {
-                    System.out.println(REGIST_ACCEPTED);
-                    sair = true;
-                }
-
-            } catch (IOException e) {
-                System.out.println(e + "_MAIN_9");
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                System.out.println(e + "_MAIN_10");
-                e.printStackTrace();
-            }
+            oOS.writeObject(request);
+        } catch (IOException e) {
+            System.out.println(e + "_MAIN_8");
+            e.printStackTrace();
         }
+
+        try {
+            request = (Request) oIS.readObject();
+            if (request.getMessageCode().equals(LOGIN_ACCEPTED)) {
+                return true;
+            }
+
+        } catch (IOException e) {
+            System.out.println(e + "_MAIN_9");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println(e + "_MAIN_10");
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    private static boolean registaUtilizador() {
+        Scanner sc = new Scanner(System.in);
+        String nome, username, pass;
+        Utilizador utilizador = null;
+        Request request = null;
+
+
+        System.out.println("Introduza o seu nome:");
+        nome = sc.nextLine();
+        System.out.println("Introduza o seu username:");
+        username = sc.next();
+        System.out.println("Introduza a sua password:");
+        pass = sc.next();
+
+        utilizador = new Utilizador(nome, username, pass);
+
+        try {
+            request = new Request(REGIST_REQUEST, utilizador);
+
+            oOS.writeObject(request);
+        } catch (IOException e) {
+            System.out.println(e + "_MAIN_8");
+            e.printStackTrace();
+        }
+
+        try {
+            request = (Request) oIS.readObject();
+            if (request.getMessageCode().equals(REGIST_ACCEPTED)) {
+                return true;
+            }
+
+        } catch (IOException e) {
+            System.out.println(e + "_MAIN_9");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println(e + "_MAIN_10");
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     private static Servidor getServidor(String ip, String port){
