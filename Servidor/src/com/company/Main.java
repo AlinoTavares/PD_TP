@@ -5,6 +5,7 @@ import java.net.*;
 
 import static com.company.typos.Typos.MAX_SIZE;
 import static com.company.typos.Typos.SERVER_REQUEST;
+import com.company.dao.GestorDeSociosDAO;
 
 public class Main {
 
@@ -13,8 +14,10 @@ public class Main {
         int GRDS_Port = -1;
         DatagramPacket packet;
         DatagramSocket socketUDP = null;
-        RecebeClienteThread recebeClienteThread = new RecebeClienteThread(6001);
+        ServerSocket serverSocket;
+        RecebeClienteThread recebeClienteThread;
 
+        GestorDeSociosDAO gestorDeSociosDAO= new GestorDeSociosDAO();
 
         if (args.length != 2) {
             System.out.println("Sintaxe: java cliente GRDS_Address GRDS_Port");
@@ -22,6 +25,12 @@ public class Main {
         }
 
         try {
+            serverSocket = new ServerSocket(0);
+            recebeClienteThread = new RecebeClienteThread(serverSocket,gestorDeSociosDAO);
+
+            var servidor = new Servidor(serverSocket.getInetAddress().toString(), serverSocket.getLocalPort());
+            var escuta_tcp = new Request(SERVER_REQUEST, servidor);
+
             GRDS_Addr = InetAddress.getByName(args[0]);
             GRDS_Port = Integer.parseInt(args[1]);
 
@@ -36,7 +45,7 @@ public class Main {
                 e.printStackTrace();
             }
             try {
-                oout.writeObject(SERVER_REQUEST);
+                oout.writeObject(escuta_tcp);
             } catch (IOException e) {
                 System.out.println(e + "_MAIN_2");
                 e.printStackTrace();
@@ -74,14 +83,14 @@ public class Main {
                 e.printStackTrace();
             }
 
-            String confirmacao = null;
+            Request confirmacao = null;
             try {
-                confirmacao = (String)oin.readObject();
+                confirmacao = (Request) oin.readObject();
             } catch (IOException e) {
                 System.out.println(e + "_MAIN_7");
                 e.printStackTrace();
             }
-            System.out.println(confirmacao);
+            System.out.println(confirmacao.getConteudo());
 
             recebeClienteThread.start();
 
@@ -94,7 +103,9 @@ public class Main {
             System.out.println("Ocorreu um erro ao nivel do socket UDP:\n\t" + e);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }finally {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             if (socketUDP != null) {
                 socketUDP.close();
             }
