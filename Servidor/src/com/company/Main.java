@@ -28,7 +28,7 @@ public class Main {
             serverSocket = new ServerSocket(0);
             recebeClienteThread = new RecebeClienteThread(serverSocket,gestorDeSociosDAO);
 
-            var servidor = new Servidor(serverSocket.getInetAddress().toString(), serverSocket.getLocalPort());
+            var servidor = new Servidor("localhost", serverSocket.getLocalPort());
             var escuta_tcp = new Request(SERVER_REQUEST, servidor);
 
             GRDS_Addr = InetAddress.getByName(args[0]);

@@ -94,6 +94,8 @@ public class Main {
             request = (Request) oIS.readObject();
             if (request.getMessageCode().equals(LOGIN_ACCEPTED)) {
                 return true;
+            }else{
+                System.out.println("LOGIN_NOT_ACCEPTED");
             }
 
         } catch (IOException e) {

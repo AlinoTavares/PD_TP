@@ -18,7 +18,7 @@ public class GestorDeSociosDAO {
     public boolean efetuaLogin(String username, String password) {
         try {
             statement = (PreparedStatement) connect.prepareStatement("SELECT username,password FROM utilizador WHERE username = ? and password = ?");
-            statement.setInt(1, Integer.parseInt(username));
+            statement.setString(1, username);
             statement.setString(2, password);
             result = statement.executeQuery();
 
@@ -34,7 +34,7 @@ public class GestorDeSociosDAO {
     }
 
     /*
-    public boolean inscreveSocio(Socio novoSocio) {
+    public boolean registaCliente(Utilizador novoSocio) {
         try {
             statement = (PreparedStatement) connect.prepareStatement("INSERT INTO socios (id,nome,email,telemovel,data_inscricao,data_nascimento,morada,creditos,password)" + "VALUES (?,?,?,?,?,?,?,?,?)");
             statement.setInt(1, novoSocio.getId());
