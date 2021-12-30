@@ -23,7 +23,7 @@ public class RecebeClienteThread extends Thread{
         int listeningPort;
         DatagramSocket socket = null;
         DatagramPacket packet;
-        String receivedMsg;
+        Request request = null;
         try{
             //it = servidores.iterator();
             socket = new DatagramSocket(PORTO_ESCURA_CLIENTE);
@@ -35,12 +35,12 @@ public class RecebeClienteThread extends Thread{
                 var bin = new ByteArrayInputStream(packet.getData(), 0, packet.getLength());
                 var oin = new ObjectInputStream(bin);
 
-                receivedMsg = (String)oin.readObject();
+                request = (Request)oin.readObject();
 
-                System.out.println("Recebido \"" + receivedMsg + "\" de " +
+                System.out.println("Recebido \"" + request.getMessageCode() + "\" de " +
                         packet.getAddress().getHostAddress() + ":" + packet.getPort());
 
-                if(!receivedMsg.equalsIgnoreCase(SERVER_REQUEST)){
+                if(!request.getMessageCode().equalsIgnoreCase(SERVER_REQUEST)){
                     continue;
                 }
 
@@ -52,10 +52,17 @@ public class RecebeClienteThread extends Thread{
 
                 System.out.println(servidor.getIp()+ "    " +servidor.getPort());
 
+                if(servidor == null){
+                    request = new Request(NO_SERVER_AVAILABLE, null);
+                }
+                else{
+                    request = new Request(SERVER_AVAILABLE, servidor);
+                }
+
                 var bout = new ByteArrayOutputStream();
                 var oout = new ObjectOutputStream(bout);
 
-                oout.writeObject(servidor);
+                oout.writeObject(request);
                 oout.flush();
 
                 packet.setData(bout.toByteArray(),0, bout.size());

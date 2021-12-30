@@ -23,6 +23,11 @@ public class Main {
 
         servidor = getServidor(args[0], args[1]);
 
+        if(servidor == null){
+            System.out.println("Não foi possivel conectar-se a um servidor.");
+            return;
+        }
+
         try{
             socket = new Socket(servidor.getIp(), servidor.getPort());
 
@@ -151,6 +156,7 @@ public class Main {
         DatagramSocket socketUDP = null;
 
         Servidor servidor = null;
+        Request request = null;
 
 
         try {
@@ -168,7 +174,8 @@ public class Main {
                 e.printStackTrace();
             }
             try {
-                oout.writeObject(SERVER_REQUEST);
+                request = new Request(SERVER_REQUEST, null);
+                oout.writeObject(request);
             } catch (IOException e) {
                 System.out.println(e + "_MAIN_2");
                 e.printStackTrace();
@@ -208,7 +215,11 @@ public class Main {
 
 
             try {
-                servidor = (Servidor)oin.readObject();
+                request = (Request) oin.readObject();
+                if(request.getMessageCode().equals(NO_SERVER_AVAILABLE)){
+                    return null;
+                }
+                servidor = (Servidor) request.getConteudo();
             } catch (IOException e) {
                 System.out.println(e + "_MAIN_7");
                 e.printStackTrace();
