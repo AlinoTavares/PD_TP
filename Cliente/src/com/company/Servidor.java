@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 
-public class Servidor implements Serializable {
+public class Servidor extends Conteudo implements Serializable {
     static final long serialVersionUID = 42L;
     private String ip;
     private int port;

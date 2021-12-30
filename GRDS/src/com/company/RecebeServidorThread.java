@@ -22,7 +22,9 @@ public class RecebeServidorThread extends Thread{
         int listeningPort;
         DatagramSocket socket = null;
         DatagramPacket packet;
-        String receivedMsg;
+        Request request = null;
+        Servidor servidor = null;
+
         try{
             socket = new DatagramSocket(PORTO_ESCURA_SERVIDOR);
 
@@ -33,23 +35,24 @@ public class RecebeServidorThread extends Thread{
                 var bin = new ByteArrayInputStream(packet.getData(), 0, packet.getLength());
                 var oin = new ObjectInputStream(bin);
 
-                receivedMsg = (String)oin.readObject();
+                request = (Request)oin.readObject();
 
-                System.out.println("Recebido \"" + receivedMsg + "\" de " +
+                System.out.println("Recebido \"" + request.getMessageCode() + "\" de " +
                         packet.getAddress().getHostAddress() + ":" + packet.getPort());
 
-                addNovoServidor(packet.getAddress().getHostAddress().toString(), packet.getPort());
-
-                if(!receivedMsg.equalsIgnoreCase(SERVER_REQUEST)){
+                if(!request.getMessageCode().equalsIgnoreCase(SERVER_REQUEST)){
                     continue;
                 }
 
-                var confirmacao = CONFIRMACAO_SERVIDOR;
+                servidor = (Servidor) request.getConteudo();
+                servidores.add(servidor);
+
+                request = new Request(CONFIRMACAO_SERVIDOR, null);
 
                 var bout = new ByteArrayOutputStream();
                 var oout = new ObjectOutputStream(bout);
 
-                oout.writeObject(confirmacao);
+                oout.writeObject(request);
                 oout.flush();
 
                 packet.setData(bout.toByteArray(),0, bout.size());
@@ -73,10 +76,5 @@ public class RecebeServidorThread extends Thread{
                 socket.close();
             }
         }
-    }
-
-    private void addNovoServidor(String ip, int porto){
-        Servidor servidor = new Servidor(ip,porto);
-        servidores.add(servidor);
     }
 }
