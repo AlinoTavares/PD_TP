@@ -16,16 +16,12 @@ public class RecebeClienteThread extends Thread{
 
     private ObjectOutputStream oOS;
     private ObjectInputStream oIS;
-    private List<Utilizador> utilizadores;
     private ServerSocket serverSocket;
     GestorDeSociosDAO gestorDeSociosDAO;
 
     public RecebeClienteThread(ServerSocket serverSocket, GestorDeSociosDAO gestorDeSociosDAO) {
         this.gestorDeSociosDAO = gestorDeSociosDAO;
         this.serverSocket = serverSocket;
-        utilizadores = new ArrayList<>();
-        Utilizador utilizador = new Utilizador("alino","alino","alino");
-        utilizadores.add(utilizador);
     }
 
     @Override
@@ -33,6 +29,7 @@ public class RecebeClienteThread extends Thread{
         try {
             //ServerSocket serverSocket = new ServerSocket(serverPort);
             boolean stop = false;
+            Request request;
             while (!stop) {
                 var socket = serverSocket.accept();
                 try{
@@ -42,7 +39,7 @@ public class RecebeClienteThread extends Thread{
                     e.printStackTrace();
                 }
 
-                var request = (Request)oIS.readObject();
+                request = (Request)oIS.readObject();
                 Utilizador utilizador = (Utilizador) request.getConteudo();
 
                 if(request.getMessageCode().equals(LOGIN_REQUEST)){
