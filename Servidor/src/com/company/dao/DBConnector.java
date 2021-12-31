@@ -12,7 +12,7 @@ public class DBConnector {
 
     public static Connection connection() {
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://192.168.99.1:3306/pd","tp_pd","1234");
+            connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/pd","root","1234");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
