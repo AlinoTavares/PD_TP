@@ -90,7 +90,7 @@ public class Main {
                 System.out.println(e + "_MAIN_7");
                 e.printStackTrace();
             }
-            System.out.println(confirmacao.getConteudo());
+            System.out.println(confirmacao.getMessageCode());
 
             recebeClienteThread.start();
 
