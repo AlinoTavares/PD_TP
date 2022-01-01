@@ -1,12 +1,7 @@
-package com.company;
+package com.company.logica;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.io.*;
-import java.net.*;
-
-import static com.company.typos.Typos.*;
 
 
 public class Main {

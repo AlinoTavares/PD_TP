@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17d23289-1369-428f-91ea-d91b3a62c2e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/Servidor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/dao/ServidorDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/out/production/untitled104/com/company/RecebeClienteThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/out/production/untitled104/com/company/RecebeClienteThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/RecebeClienteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/RecebeClienteThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/Conteudo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/Conteudo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/RecebeClienteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/RecebeClienteThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/dao/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/dao/DBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/RecebeClienteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/RecebeClienteThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/Servidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/Utilizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/Utilizador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/dao/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/dao/DBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/src/com/company/dao/GestorDeSociosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/src/com/company/logica/dao/GestorDeSociosDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +119,7 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.company.logica.Main" />
       <module name="GRDS" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
@@ -138,6 +145,7 @@
       <workItem from="1640170504441" duration="47000" />
       <workItem from="1640632136424" duration="4555000" />
       <workItem from="1640686739227" duration="2351000" />
+      <workItem from="1641041314668" duration="1948000" />
     </task>
     <servers />
   </component>

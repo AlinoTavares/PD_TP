@@ -1,11 +1,15 @@
 package com.company;
 
+import com.company.logica.RecebeClienteThread;
+import com.company.logica.Request;
+import com.company.logica.Servidor;
+import com.company.logica.dao.ServidorDAO;
+
 import java.io.*;
 import java.net.*;
 
 import static com.company.typos.Typos.MAX_SIZE;
 import static com.company.typos.Typos.SERVER_REQUEST;
-import com.company.dao.GestorDeSociosDAO;
 
 public class Main {
 
@@ -17,7 +21,7 @@ public class Main {
         ServerSocket serverSocket;
         RecebeClienteThread recebeClienteThread;
 
-        GestorDeSociosDAO gestorDeSociosDAO= new GestorDeSociosDAO();
+        ServidorDAO gestorDeSociosDAO= new ServidorDAO();
 
         if (args.length != 2) {
             System.out.println("Sintaxe: java cliente GRDS_Address GRDS_Port");

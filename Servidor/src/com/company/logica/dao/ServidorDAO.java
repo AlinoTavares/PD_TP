@@ -1,17 +1,16 @@
-package com.company.dao;
+package com.company.logica.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-public class GestorDeSociosDAO {
+public class ServidorDAO {
     private final Connection connect;
     private PreparedStatement statement;
     private ResultSet result;
 
-    public GestorDeSociosDAO() {
+    public ServidorDAO() {
         connect = DBConnector.connection();
     }
 
