@@ -1,4 +1,4 @@
-package com.company;
+package com.company.logica;
 
 import java.io.*;
 import java.net.*;

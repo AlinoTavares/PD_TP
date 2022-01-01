@@ -1,14 +1,12 @@
-package com.company;
+package com.company.logica;
 
-import com.company.dao.GestorDeSociosDAO;
+
+import com.company.logica.dao.ServidorDAO;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.company.typos.Typos.*;
 
@@ -17,9 +15,9 @@ public class RecebeClienteThread extends Thread{
     private ObjectOutputStream oOS;
     private ObjectInputStream oIS;
     private ServerSocket serverSocket;
-    GestorDeSociosDAO gestorDeSociosDAO;
+    ServidorDAO gestorDeSociosDAO;
 
-    public RecebeClienteThread(ServerSocket serverSocket, GestorDeSociosDAO gestorDeSociosDAO) {
+    public RecebeClienteThread(ServerSocket serverSocket, ServidorDAO gestorDeSociosDAO) {
         this.gestorDeSociosDAO = gestorDeSociosDAO;
         this.serverSocket = serverSocket;
     }

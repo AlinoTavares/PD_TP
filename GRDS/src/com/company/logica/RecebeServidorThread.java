@@ -1,11 +1,9 @@
-package com.company;
+package com.company.logica;
 
 import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
-import java.util.Iterator;
 import java.util.List;
 
 import static com.company.typos.Typos.*;

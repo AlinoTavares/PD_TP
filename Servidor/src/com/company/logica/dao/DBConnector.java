@@ -1,4 +1,4 @@
-package com.company.dao;
+package com.company.logica.dao;
 
 
 import java.sql.Connection;
