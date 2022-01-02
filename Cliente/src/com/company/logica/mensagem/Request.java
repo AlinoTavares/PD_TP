@@ -1,4 +1,6 @@
-package com.company.logica;
+package com.company.logica.mensagem;
+
+import com.company.logica.mensagem.Conteudo;
 
 import java.io.Serializable;
 

@@ -67,6 +67,7 @@ public class RecebeServidorThread extends Thread{
             System.out.println("Ocorreu um erro ao nivel do socket UDP:\n\t"+e);
         }catch(IOException e){
             System.out.println("Ocorreu um erro no acesso ao socket:\n\t"+e);
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally{
