@@ -17,14 +17,13 @@ public class RecebeServidorThread extends Thread{
 
     @Override
     public void run() {
-        int listeningPort;
         DatagramSocket socket = null;
         DatagramPacket packet;
         Request request = null;
         Servidor servidor = null;
 
         try{
-            socket = new DatagramSocket(PORTO_ESCURA_SERVIDOR);
+            socket = new DatagramSocket(PORTO_ESCUTA_SERVIDOR);
 
             while(true){
                 packet = new DatagramPacket(new byte[MAX_SIZE], MAX_SIZE);
@@ -34,6 +33,9 @@ public class RecebeServidorThread extends Thread{
                 var oin = new ObjectInputStream(bin);
 
                 request = (Request)oin.readObject();
+
+                servidor = (Servidor) request.getConteudo();
+                System.out.println(servidor.getIp()+" "+servidor.getPort());
 
                 System.out.println("Recebido \"" + request.getMessageCode() + "\" de " +
                         packet.getAddress().getHostAddress() + ":" + packet.getPort());
@@ -67,6 +69,7 @@ public class RecebeServidorThread extends Thread{
             System.out.println("Ocorreu um erro ao nivel do socket UDP:\n\t"+e);
         }catch(IOException e){
             System.out.println("Ocorreu um erro no acesso ao socket:\n\t"+e);
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally{

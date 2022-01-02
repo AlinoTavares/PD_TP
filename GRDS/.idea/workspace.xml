@@ -96,7 +96,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Cliente" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../TESTE_PD/PD/GRDS" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -119,7 +119,7 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.logica.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="GRDS" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
@@ -145,7 +145,7 @@
       <workItem from="1640170504441" duration="47000" />
       <workItem from="1640632136424" duration="4555000" />
       <workItem from="1640686739227" duration="2351000" />
-      <workItem from="1641041314668" duration="1948000" />
+      <workItem from="1641041314668" duration="10162000" />
     </task>
     <servers />
   </component>

@@ -24,7 +24,7 @@ public class RecebeClienteThread extends Thread{
         Request request = null;
         try{
             //it = servidores.iterator();
-            socket = new DatagramSocket(PORTO_ESCURA_CLIENTE);
+            socket = new DatagramSocket(PORTO_ESCUTA_CLIENTE);
 
             while(true){
                 packet = new DatagramPacket(new byte[MAX_SIZE], MAX_SIZE);

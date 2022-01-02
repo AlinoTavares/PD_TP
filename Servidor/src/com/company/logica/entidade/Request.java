@@ -1,4 +1,4 @@
-package com.company.logica;
+package com.company.logica.entidade;
 
 import java.io.Serializable;
 
@@ -19,4 +19,5 @@ public class Request implements Serializable {
     public Conteudo getConteudo() {
         return conteudo;
     }
+
 }

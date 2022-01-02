@@ -1,4 +1,4 @@
-package com.company.logica;
+package com.company.logica.entidade;
 
 import java.io.Serializable;
 

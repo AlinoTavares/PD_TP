@@ -1,4 +1,8 @@
-package com.company.logica;
+package com.company;
+
+import com.company.logica.RecebeClienteThread;
+import com.company.logica.RecebeServidorThread;
+import com.company.logica.Servidor;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,8 @@
-package com.company.logica;
+package com.company.logica.comunicacao;
 
 
+import com.company.logica.entidade.Request;
+import com.company.logica.entidade.Utilizador;
 import com.company.logica.dao.ServidorDAO;
 
 import java.io.IOException;
